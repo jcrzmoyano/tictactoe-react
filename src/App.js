@@ -1,24 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id="game">
+        <h1>Tic Tac Toe</h1>
+        <div id="board">
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+          <button className="cell">
+            <span className="cell-content"></span>
+          </button>
+        </div>
+      </div>
+
+      <div id="modal-overlay">
+        <div id="game-result-modal">
+          <div id="result-container">
+            <div id="winner-container">
+              <span></span>
+            </div>
+          </div>
+          <div id="new-game-container">
+            <button id="new-game-button">Start New Game</button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
