@@ -1,0 +1,10 @@
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 90%;
+    color: #fff6be;
+    text-align: right;
+    height: 45px;
+    line-height: 45px;
+}

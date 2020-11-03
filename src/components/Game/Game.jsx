@@ -4,6 +4,7 @@ import './Game.css'
 import Board from '../Board/Board';
 import ResultOverlay from '../ResultOverlay/ResultOverlay';
 import { calculateWinner } from '../../utils/WinnerCalc';
+import FooterComp from '../Footer/FooterComp';
 
 
 const Game = () => {
@@ -60,6 +61,7 @@ const Game = () => {
         winner={winner}
         onNewGameClicked={restartGame}
       />
+      <FooterComp />
     </>
   );
 }
