@@ -4,19 +4,17 @@ import './Board.css'
 import Cell from '../Cell/Cell';
 
 
-const Board = () => {
+const Board = (props) => {
 
-    const cellValues = ['X','X','X','O','O','X','O','',''];
-    const winningCombination = [0,4,8];
+    const cells = props.cellValues.map((value, index) => {
+        const highlight = props.winningCombination && props.winningCombination.indexOf(index) >= 0;
 
-    const cells = cellValues.map((value, index) => {
-        const highlight = winningCombination && winningCombination.indexOf(index) >= 0;
-        
         return <Cell
-                key={index}
-                value={value}
-                highlight={highlight}
-                />  
+            key={index}
+            value={value}
+            highlight={highlight}
+            onClick={() => props.cellClicked(index)}
+        />
     })
 
     return (

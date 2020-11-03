@@ -1,31 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Game.css'
 import Board from '../Board/Board';
+import ResultOverlay from '../ResultOverlay/ResultOverlay';
+import { calculateWinner } from '../../utils/WinnerCalc';
 
 
 const Game = () => {
-    return ( 
-        <>
+
+  const [cellValues, setCellValues] = useState(['', '', '', '', '', '', '', '', '']);
+  const [xIsNext, setXIsNext] = useState(true);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [turnsLeft, setTurnsLeft] = useState(9);
+  const [winner, setWinner] = useState();
+  const [winningCombination, setWinningCombination] = useState([]);
+
+  const isCellEmpty = (cellIndex) => cellValues[cellIndex] === '';
+
+  const onCellClicked = (cellIndex) => {
+    if (isCellEmpty(cellIndex)) {
+      const newCellValues = [...cellValues]
+      newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
+
+      const updatedTurnLeft = turnsLeft - 1;
+
+      //Calculate the result
+      const calcResult = calculateWinner(newCellValues, updatedTurnLeft, cellIndex)
+
+
+      setCellValues(newCellValues)
+      setXIsNext(!xIsNext)
+      setIsGameOver(calcResult.hasResult)
+      setTurnsLeft(updatedTurnLeft);
+      setWinner(calcResult.winner)
+      setWinningCombination(calcResult.winningCombination)
+    }
+  }
+
+  return (
+    <>
       <div id="game">
         <h1>Tic Tac Toe</h1>
-        <Board />   
+        <Board
+          cellValues={cellValues}
+          winningCombination={winningCombination}
+          cellClicked={onCellClicked}
+        />
       </div>
-
-      <div id="modal-overlay">
-        <div id="game-result-modal">
-          <div id="result-container">
-            <div id="winner-container">
-              <span></span>
-            </div>
-          </div>
-          <div id="new-game-container">
-            <button id="new-game-button">Start New Game</button>
-          </div>
-        </div>
-      </div>
+      <ResultOverlay
+        isGameOver={isGameOver} 
+        winner={winner}
+      />
     </>
-     );
+  );
 }
- 
+
 export default Game;

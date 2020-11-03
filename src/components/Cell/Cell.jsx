@@ -14,9 +14,9 @@ const Cell = (props) => {
         'cell-content': true,
         populated: props.value
     })
-    
+
     return (
-        <button className={cellClass}>
+        <button className={cellClass} onClick={props.onClick}>
             <span className={cellContentClass}>{props.value}</span>
         </button>
     );
