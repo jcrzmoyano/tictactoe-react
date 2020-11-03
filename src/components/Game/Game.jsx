@@ -17,6 +17,15 @@ const Game = () => {
 
   const isCellEmpty = (cellIndex) => cellValues[cellIndex] === '';
 
+  const restartGame = () => {
+    setCellValues(['', '', '', '', '', '', '', '', ''])
+    setXIsNext(true)
+    setIsGameOver(false)
+    setTurnsLeft(9);
+    setWinner(undefined)
+    setWinningCombination([])
+  }
+
   const onCellClicked = (cellIndex) => {
     if (isCellEmpty(cellIndex)) {
       const newCellValues = [...cellValues]
@@ -26,7 +35,6 @@ const Game = () => {
 
       //Calculate the result
       const calcResult = calculateWinner(newCellValues, updatedTurnLeft, cellIndex)
-
 
       setCellValues(newCellValues)
       setXIsNext(!xIsNext)
@@ -48,8 +56,9 @@ const Game = () => {
         />
       </div>
       <ResultOverlay
-        isGameOver={isGameOver} 
+        isGameOver={isGameOver}
         winner={winner}
+        onNewGameClicked={restartGame}
       />
     </>
   );
