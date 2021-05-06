@@ -1,5 +1,6 @@
 <h1 align="center">Tic Tac Toe Game</h1>
 <h2 align="center">Built with React, JavaScript, and CSS.</h2>
+<h4 align="center">https://jcrzmoyano.github.io/tictactoe-react/</h4>
 
 ## Project Screenshots 📷
 
